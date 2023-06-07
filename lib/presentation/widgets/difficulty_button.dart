@@ -1,5 +1,6 @@
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:focusable_control_builder/focusable_control_builder.dart';
 import 'package:outpost/assets.dart';
 import 'package:outpost/styles.dart';
@@ -30,10 +31,16 @@ class DifficultyBtn extends StatelessWidget {
             height: 60,
             child: Stack(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF00D1FF).withOpacity(.1),
-                    border: Border.all(color: Colors.white, width: 5),
+                AnimatedOpacity(
+                  opacity: (!selected && (state.isHovered || state.isFocused))
+                      ? 1
+                      : 0,
+                  duration: .3.seconds,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF00D1FF).withOpacity(.1),
+                      border: Border.all(color: Colors.white, width: 5),
+                    ),
                   ),
                 ),
                 if (state.isHovered || state.isFocused) ...[

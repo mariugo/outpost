@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:outpost/presentation/screens/title_screen.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 void main() {
+  Animate.restartOnHotReload = true;
   runApp(const NextGenApp());
 }
 

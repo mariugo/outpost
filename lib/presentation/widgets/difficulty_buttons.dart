@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:outpost/presentation/widgets/difficulty_button.dart';
 
 class DifficultyBtns extends StatelessWidget {
@@ -24,19 +25,28 @@ class DifficultyBtns extends StatelessWidget {
           selected: difficulty == 0,
           onPressed: () => onDifficultyPressed(0),
           onHover: (over) => onDifficultyFocused(over ? 0 : null),
-        ),
+        )
+            .animate()
+            .fadeIn(delay: 1.3.seconds, duration: .35.seconds)
+            .slide(begin: const Offset(0, .2)),
         DifficultyBtn(
           label: 'Normal',
           selected: difficulty == 1,
           onPressed: () => onDifficultyPressed(1),
           onHover: (over) => onDifficultyFocused(over ? 1 : null),
-        ),
+        )
+            .animate()
+            .fadeIn(delay: 1.5.seconds, duration: .35.seconds)
+            .slide(begin: const Offset(0, .2)),
         DifficultyBtn(
           label: 'Hardcore',
           selected: difficulty == 2,
           onPressed: () => onDifficultyPressed(2),
           onHover: (over) => onDifficultyFocused(over ? 2 : null),
-        ),
+        )
+            .animate()
+            .fadeIn(delay: 1.5.seconds, duration: .35.seconds)
+            .slide(begin: const Offset(0, .2)),
         const Gap(20),
       ],
     );

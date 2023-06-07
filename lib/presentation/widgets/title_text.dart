@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:outpost/assets.dart';
 import 'package:outpost/styles.dart';
 
@@ -24,8 +25,11 @@ class TitleText extends StatelessWidget {
             Text('57', style: TextStyles.h2),
             Image.asset(AssetPaths.titleSelectedRight, height: 65),
           ],
-        ),
-        Text('INTO THE UNKNOWN', style: TextStyles.h3),
+        ).animate().fadeIn(delay: .8.seconds, duration: .7.seconds),
+        Text('INTO THE UNKNOWN', style: TextStyles.h3).animate().fadeIn(
+              delay: 1.seconds,
+              duration: .7.seconds,
+            ),
       ],
     );
   }

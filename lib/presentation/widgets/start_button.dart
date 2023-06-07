@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:focusable_control_builder/focusable_control_builder.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:outpost/assets.dart';
 import 'package:outpost/styles.dart';
 
@@ -48,8 +49,13 @@ class StartBtnState extends State<StartBtn> {
                 ),
               ),
             ],
-          ),
-        );
+          )
+              .animate(autoPlay: false, onInit: (c) => _btnAnim = c)
+              .shimmer(duration: .7.seconds, color: Colors.black),
+        )
+            .animate()
+            .fadeIn(delay: 2.3.seconds)
+            .slide(begin: const Offset(0, .2));
       },
     );
   }
