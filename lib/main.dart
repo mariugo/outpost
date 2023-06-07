@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:outpost/styles.dart';
+import 'package:outpost/presentation/title_screen.dart';
 
 void main() {
-  //WidgetsFlutterBinding.ensureInitialized();
-  //setWindowMinSize(const Size(800, 500));
   runApp(const NextGenApp());
 }
 
@@ -16,14 +14,7 @@ class NextGenApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(brightness: Brightness.dark),
-      home: Scaffold(
-        body: Center(
-          child: Text(
-            'Insert Next-Generation UI Here...',
-            style: TextStyles.h2,
-          ),
-        ),
-      ),
+      home: const TitleScreen(),
     );
   }
 }
