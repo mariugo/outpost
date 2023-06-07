@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:outpost/presentation/title_screen.dart';
+import 'package:outpost/presentation/screens/title_screen.dart';
 
 void main() {
   runApp(const NextGenApp());

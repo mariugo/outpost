@@ -1,17 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:outpost/assets.dart';
+import 'package:outpost/presentation/widgets/title_screen_ui.dart';
 import 'package:outpost/styles.dart';
 
-class TitleScreen extends StatelessWidget {
+class TitleScreen extends StatefulWidget {
   const TitleScreen({super.key});
 
+  @override
+  State<TitleScreen> createState() => _TitleScreenState();
+}
+
+class _TitleScreenState extends State<TitleScreen> {
+  Color get _emitColor =>
+      AppColors.emitColors[_difficultyOverride ?? _difficulty];
+  Color get _orbColor =>
+      AppColors.orbColors[_difficultyOverride ?? _difficulty];
+  int _difficulty = 0;
+  int? _difficultyOverride;
   final _finalReceiveLightAmt = 0.7;
   final _finalEmitLightAmt = 0.5;
 
+  void _handleDifficultyPressed(int value) {
+    setState(() => _difficulty = value);
+  }
+
+  void _handleDifficultyFocused(int? value) {
+    setState(() => _difficultyOverride = value);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final orbColor = AppColors.orbColors[0]; // Add this final variable
-    final emitColor = AppColors.emitColors[0];
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
@@ -19,35 +37,42 @@ class TitleScreen extends StatelessWidget {
           children: [
             Image.asset(AssetPaths.titleBgBase),
             _LitImage(
-              color: orbColor,
+              color: _orbColor,
               imgSrc: AssetPaths.titleBgReceive,
               lightAmt: _finalReceiveLightAmt,
             ),
             _LitImage(
               imgSrc: AssetPaths.titleMgBase,
-              color: orbColor,
+              color: _orbColor,
               lightAmt: _finalReceiveLightAmt,
             ),
             _LitImage(
               imgSrc: AssetPaths.titleMgReceive,
-              color: orbColor,
+              color: _orbColor,
               lightAmt: _finalReceiveLightAmt,
             ),
             _LitImage(
               imgSrc: AssetPaths.titleMgEmit,
-              color: emitColor,
+              color: _emitColor,
               lightAmt: _finalEmitLightAmt,
             ),
             Image.asset(AssetPaths.titleFgBase),
             _LitImage(
               imgSrc: AssetPaths.titleFgReceive,
-              color: orbColor,
+              color: _orbColor,
               lightAmt: _finalReceiveLightAmt,
             ),
             _LitImage(
               imgSrc: AssetPaths.titleFgEmit,
-              color: emitColor,
+              color: _emitColor,
               lightAmt: _finalEmitLightAmt,
+            ),
+            Positioned.fill(
+              child: TitleScreenUi(
+                difficulty: _difficulty,
+                onDifficultyFocused: _handleDifficultyFocused,
+                onDifficultyPressed: _handleDifficultyPressed,
+              ),
             ),
           ],
         ),
